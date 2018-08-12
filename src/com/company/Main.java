@@ -7,10 +7,11 @@ public class Main {
     public static void main(String[] args) {
 
 
+
         String [] users = setUsers();
         int moves = 0;
         String board [] [] = generateInitialBoard();
-        Scanner userInput = new Scanner(System.in);
+       // Scanner userInput = new Scanner(System.in);
 
         int MatchResult = isOver(board,moves);
         int errorCode;
@@ -34,29 +35,40 @@ public class Main {
 
 
                 while (errorCode !=0) {
-                    System.out.print(users[0] + ", please insert the location: ");
-                    errorCode = insertMove(board, "X", userInput.nextInt());
-                    System.out.println();
 
-                    if(errorCode == 1 )
-                        System.out.println("worng input Format");
-                    else if (errorCode == 2)
-                        System.out.println("this location is pre-occupied");
+                    try {
+                        Scanner userInput = new Scanner(System.in);
+                        System.out.print(users[0] + ", please insert the location: ");
+                        errorCode = insertMove(board, "X", userInput.nextInt());
+                        System.out.println();
 
+                        if (errorCode == 1)
+                            System.out.println("worng input Format");
+                        else if (errorCode == 2)
+                            System.out.println("this location is pre-occupied");
+                    }catch (Exception e){
+
+                        System.out.println("print a number between 1 and 9");
+                    }
 
                 }
 
             }else {
                 while (errorCode !=0) {
-                    System.out.print(users[1] + ", please insert the location: ");
-                    errorCode = insertMove(board, "O", userInput.nextInt());
-                    System.out.println();
 
-                    if(errorCode == 1 )
-                        System.out.println("worng input Format");
-                    else if (errorCode == 2)
-                        System.out.println("this location is pre-occupied");
+                    try {
+                        Scanner userInput = new Scanner(System.in);
+                        System.out.print(users[1] + ", please insert the location: ");
+                        errorCode = insertMove(board, "O", userInput.nextInt());
+                        System.out.println();
 
+                        if (errorCode == 1)
+                            System.out.println("worng input Format");
+                        else if (errorCode == 2)
+                            System.out.println("this location is pre-occupied");
+                    }catch (Exception e){
+                        System.out.println("enter a number between 1 and 9");
+                    }
 
                 }
             }
